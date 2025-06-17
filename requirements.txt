@@ -1,0 +1,35 @@
+# RAG System Requirements
+# Core LLM Framework
+langchain==0.1.0
+langchain-community==0.0.13
+langchain-openai==0.0.5
+
+# Document Processing
+pypdf2==3.0.1
+python-docx==1.1.0
+unstructured==0.11.8
+
+# Vector Database
+chromadb==0.4.22
+# Alternative: pinecone-client==3.0.0
+
+# Data Processing
+pandas==2.1.4
+numpy==1.24.3
+tiktoken==0.5.2
+
+# API Clients
+openai==1.7.1
+google-generativeai==0.3.2
+
+# Configuration
+pyyaml==6.0.1
+python-dotenv==1.0.0
+
+# Evaluation & Monitoring
+ragas==0.1.1
+langsmith==0.0.77
+
+# Utilities
+tqdm==4.66.1
+rich==13.7.0
