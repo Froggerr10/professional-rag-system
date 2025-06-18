@@ -1,35 +1,87 @@
-# RAG System Requirements
-# Core LLM Framework
-langchain==0.1.0
-langchain-community==0.0.13
-langchain-openai==0.0.5
+# Dependências do Sistema RAG Profissional Notecraft
+# Core dependencies para funcionalidade básica
 
-# Document Processing
-pypdf2==3.0.1
-python-docx==1.1.0
-unstructured==0.11.8
+# Processamento de texto e NLP
+numpy>=1.21.0
+pandas>=1.3.0
 
-# Vector Database
-chromadb==0.4.22
-# Alternative: pinecone-client==3.0.0
+# Processamento de documentos
+PyPDF2>=3.0.0
+python-docx>=0.8.11
+striprtf>=0.0.12
 
-# Data Processing
-pandas==2.1.4
-numpy==1.24.3
-tiktoken==0.5.2
+# Embeddings e ML
+sentence-transformers>=2.2.0
+scikit-learn>=1.0.0
+faiss-cpu>=1.7.0
 
-# API Clients
-openai==1.7.1
-google-generativeai==0.3.2
+# LLM APIs (opcional - configure API keys)
+openai>=1.0.0
+google-generativeai>=0.3.0
 
-# Configuration
-pyyaml==6.0.1
-python-dotenv==1.0.0
+# Configuração e dados
+PyYAML>=6.0
+python-dotenv>=0.19.0
 
-# Evaluation & Monitoring
-ragas==0.1.1
-langsmith==0.0.77
+# Tokenização (opcional)
+tiktoken>=0.5.0
 
-# Utilities
-tqdm==4.66.1
-rich==13.7.0
+# Interface web e API
+flask>=2.0.0
+flask-cors>=3.0.0
+jinja2>=3.0.0
+
+# Utilidades
+requests>=2.25.0
+tqdm>=4.60.0
+colorama>=0.4.4
+
+# Vector stores (opcionais)
+chromadb>=0.4.0
+pinecone-client>=2.2.0
+
+# Desenvolvimento e testes
+pytest>=6.0.0
+pytest-cov>=2.12.0
+black>=21.0.0
+flake8>=3.9.0
+
+# Logging e monitoramento
+loguru>=0.6.0
+
+# Performance e concorrência
+concurrent-futures>=3.1.1
+multiprocessing-logging>=0.3.0
+
+# Análise e visualização (opcional)
+matplotlib>=3.3.0
+seaborn>=0.11.0
+plotly>=5.0.0
+
+# Dependências específicas do sistema
+psutil>=5.8.0
+pathlib>=1.0.1
+typing-extensions>=4.0.0
+
+# Dependências opcionais para features avançadas
+# Descomente conforme necessário:
+
+# Para processamento avançado de PDFs:
+# pymupdf>=1.20.0
+# pdfplumber>=0.7.0
+
+# Para processamento de imagens em documentos:
+# pillow>=8.0.0
+# pytesseract>=0.3.8
+
+# Para análise semântica avançada:
+# spacy>=3.4.0
+# transformers>=4.20.0
+
+# Para bases de dados vetoriais avançadas:
+# weaviate-client>=3.15.0
+# qdrant-client>=1.0.0
+
+# Para monitoramento e métricas:
+# wandb>=0.12.0
+# mlflow>=1.28.0
