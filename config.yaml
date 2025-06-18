@@ -1,0 +1,231 @@
+# Configuração do Sistema RAG Profissional Notecraft
+# Arquivo de configuração YAML para todas as estratégias e parâmetros
+
+# Estratégias de Chunking
+chunking_strategies:
+  recursive_500_100:
+    type: "recursive"
+    chunk_size: 500
+    chunk_overlap: 100
+    description: "Chunking recursivo preservando estrutura natural do texto"
+    
+  recursive_1000_200:
+    type: "recursive"
+    chunk_size: 1000
+    chunk_overlap: 200
+    description: "Chunks maiores para contexto expandido"
+    
+  token_400_50:
+    type: "token"
+    chunk_size: 400
+    chunk_overlap: 50
+    description: "Chunking baseado em tokens para controle preciso"
+    
+  token_800_100:
+    type: "token"
+    chunk_size: 800
+    chunk_overlap: 100
+    description: "Tokens maiores para modelos com contexto expandido"
+    
+  semantic_auto:
+    type: "semantic"
+    max_chunk_size: 1000
+    min_chunk_size: 200
+    description: "Chunking semântico baseado em significado"
+    
+  page_based:
+    type: "page"
+    chunk_size: 2000
+    description: "Chunking por páginas detectando marcadores"
+
+# Configurações de Retrieval
+retrieval_configs:
+  standard_conservative:
+    search_type: "similarity"
+    k: 3
+    score_threshold: 0.7
+    use_hyde: false
+    description: "Busca conservadora com alta precisão"
+    
+  standard_expansive:
+    search_type: "similarity"
+    k: 5
+    score_threshold: 0.5
+    use_hyde: false
+    description: "Busca expansiva para maior cobertura"
+    
+  hyde_enhanced:
+    search_type: "similarity"
+    k: 4
+    score_threshold: 0.6
+    use_hyde: true
+    description: "Busca melhorada com HyDE"
+    
+  mmr_diversified:
+    search_type: "mmr"
+    k: 4
+    score_threshold: 0.6
+    lambda_mult: 0.5
+    description: "Busca diversificada com MMR"
+
+# Configuração dos LLMs
+llm_config:
+  providers:
+    openai:
+      model: "gpt-3.5-turbo"
+      temperature: 0.1
+      max_tokens: 1000
+      api_key_env: "OPENAI_API_KEY"
+      
+    openai_gpt4:
+      model: "gpt-4"
+      temperature: 0.1
+      max_tokens: 1000
+      api_key_env: "OPENAI_API_KEY"
+      
+    gemini:
+      model: "gemini-pro"
+      temperature: 0.1
+      max_tokens: 1000
+      api_key_env: "GEMINI_API_KEY"
+      
+  default_provider: "openai"
+
+# Configuração de Embeddings
+embedding_config:
+  providers:
+    openai:
+      model: "text-embedding-ada-002"
+      api_key_env: "OPENAI_API_KEY"
+      dimensions: 1536
+      
+    huggingface:
+      model: "sentence-transformers/all-MiniLM-L6-v2"
+      dimensions: 384
+      
+    local:
+      model: "all-MiniLM-L6-v2"
+      dimensions: 384
+      
+  default_provider: "openai"
+
+# Configuração de Avaliação
+evaluation_config:
+  llm_as_judge:
+    enabled: true
+    provider: "openai"
+    model: "gpt-3.5-turbo"
+    
+  metrics:
+    response_quality:
+      enabled: true
+      weight: 0.4
+      
+    retrieval_quality:
+      enabled: true
+      weight: 0.2
+      
+    relevance:
+      enabled: true
+      weight: 0.2
+      
+    completeness:
+      enabled: true
+      weight: 0.2
+      
+  thresholds:
+    good_score: 7.0
+    excellent_score: 8.5
+
+# Configuração de Armazenamento
+storage_config:
+  vector_store:
+    type: "chroma"  # ou "faiss", "pinecone"
+    persist_directory: "./vector_db"
+    
+  document_cache:
+    enabled: true
+    max_size_mb: 500
+    cache_directory: "./cache"
+    
+  evaluation_history:
+    enabled: true
+    file_path: "./evaluation_history.json"
+
+# Configuração de Performance
+performance_config:
+  batch_size:
+    embedding_generation: 10
+    document_processing: 5
+    
+  concurrency:
+    max_workers: 4
+    
+  timeouts:
+    llm_request: 30
+    embedding_request: 15
+    document_processing: 60
+
+# Configuração de Interface
+interface_config:
+  theme: "light"  # "light" ou "dark"
+  language: "pt-BR"
+  
+  colors:
+    primary: "#4bffa5"
+    secondary: "#101010"
+    success: "#22c55e"
+    warning: "#f59e0b"
+    error: "#ef4444"
+    
+  features:
+    auto_save_history: true
+    show_confidence_scores: true
+    show_source_citations: true
+    enable_follow_up_suggestions: true
+
+# Configuração de Logging
+logging_config:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  
+  handlers:
+    console:
+      enabled: true
+      level: "INFO"
+      
+    file:
+      enabled: true
+      level: "DEBUG"
+      file_path: "./logs/rag_system.log"
+      max_bytes: 10485760  # 10MB
+      backup_count: 5
+
+# Configuração de Segurança
+security_config:
+  api_rate_limits:
+    openai: 60  # requests per minute
+    gemini: 60
+    
+  content_filtering:
+    enabled: true
+    max_document_size_mb: 100
+    allowed_extensions: [".pdf", ".docx", ".txt", ".md"]
+    
+  privacy:
+    log_user_queries: false
+    anonymize_evaluation_data: true
+
+# Configuração de Experimentos
+experiments_config:
+  a_b_testing:
+    enabled: true
+    strategies_to_compare: 
+      - "recursive_500_100"
+      - "token_400_50"
+      - "semantic_auto"
+      
+  auto_optimization:
+    enabled: true
+    evaluation_threshold: 50  # Número mínimo de avaliações
+    optimization_frequency: "weekly"
