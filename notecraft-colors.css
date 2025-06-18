@@ -1,0 +1,323 @@
+/* Paleta de Cores Notecraft - Sistema RAG Profissional */
+/* Arquivo CSS com todas as variáveis da paleta em português */
+
+:root {
+  /* === MODO CLARO === */
+  /* Cores Principais */
+  --nc-primary: #4bffa5;              /* Verde Empresarial */
+  --nc-secondary: #101010;            /* Preto Corporativo */
+  --nc-surface: #ffffff;              /* Superfície Limpa */
+  --nc-background: #f8fafc;           /* Fundo Principal */
+  
+  /* Cores de Estado */
+  --nc-success: #22c55e;              /* Verde de Sucesso */
+  --nc-warning: #f59e0b;              /* Âmbar de Alerta */
+  --nc-error: #ef4444;                /* Vermelho de Erro */
+  --nc-info: #3b82f6;                 /* Azul de Informação */
+  
+  /* Cores de Texto */
+  --nc-text-primary: #1e293b;         /* Texto Principal */
+  --nc-text-secondary: #64748b;       /* Texto Secundário */
+  --nc-text-muted: #94a3b8;           /* Texto Silenciado */
+  
+  /* Cores Interativas */
+  --nc-interactive: #eeeeee;          /* Links do Sistema */
+  --nc-border: #e2e8f0;              /* Bordas Padrão */
+  --nc-hover: #f1f5f9;               /* Estado Hover */
+  
+  /* === MODO ESCURO === */
+  /* Cores Principais - Escuro */
+  --nc-dark-primary: #3b82f6;         /* Azul Brilhante */
+  --nc-dark-secondary: #1e293b;       /* Ardósia Escura */
+  --nc-dark-surface: #1e293b;         /* Superfície Escura */
+  --nc-dark-background: #0f172a;      /* Fundo Muito Escuro */
+  
+  /* Cores de Estado - Escuro */
+  --nc-dark-success: #34d399;         /* Esmeralda Brilhante */
+  --nc-dark-warning: #fbbf24;         /* Âmbar Brilhante */
+  --nc-dark-error: #f87171;           /* Vermelho Suave */
+  --nc-dark-info: #60a5fa;            /* Azul Claro */
+  
+  /* Cores de Texto - Escuro */
+  --nc-dark-text-primary: #f1f5f9;    /* Texto Claro */
+  --nc-dark-text-secondary: #94a3b8;  /* Texto Secundário Claro */
+  --nc-dark-text-muted: #64748b;      /* Texto Silenciado Escuro */
+  
+  /* Cores Interativas - Escuro */
+  --nc-dark-interactive: #334155;     /* Links Escuros */
+  --nc-dark-border: #334155;          /* Bordas Escuras */
+  --nc-dark-hover: #475569;           /* Estado Hover Escuro */
+  
+  /* === ESPAÇAMENTO === */
+  --nc-space-xs: 4px;                 /* Extra Pequeno */
+  --nc-space-sm: 8px;                 /* Pequeno */
+  --nc-space-md: 16px;                /* Médio */
+  --nc-space-lg: 24px;                /* Grande */
+  --nc-space-xl: 32px;                /* Extra Grande */
+  --nc-space-2xl: 48px;               /* Muito Grande */
+  
+  /* === BORDAS === */
+  --nc-radius-sm: 4px;                /* Borda Pequena */
+  --nc-radius-md: 8px;                /* Borda Média */
+  --nc-radius-lg: 12px;               /* Borda Grande */
+  --nc-radius-xl: 16px;               /* Borda Extra Grande */
+  --nc-radius-full: 9999px;           /* Borda Circular */
+  
+  /* === TIPOGRAFIA === */
+  --nc-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --nc-font-mono: 'Fira Code', 'SF Mono', Monaco, 'Cascadia Code', monospace;
+  
+  /* Tamanhos de Fonte */
+  --nc-text-xs: 0.75rem;              /* 12px */
+  --nc-text-sm: 0.875rem;             /* 14px */
+  --nc-text-base: 1rem;               /* 16px */
+  --nc-text-lg: 1.125rem;             /* 18px */
+  --nc-text-xl: 1.25rem;              /* 20px */
+  --nc-text-2xl: 1.5rem;              /* 24px */
+  --nc-text-3xl: 1.875rem;            /* 30px */
+  --nc-text-4xl: 2.25rem;             /* 36px */
+  
+  /* === SOMBRAS === */
+  --nc-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --nc-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --nc-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --nc-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* === TEMA ESCURO ATIVO === */
+[data-theme="dark"] {
+  --nc-primary: var(--nc-dark-primary);
+  --nc-secondary: var(--nc-dark-secondary);
+  --nc-surface: var(--nc-dark-surface);
+  --nc-background: var(--nc-dark-background);
+  
+  --nc-success: var(--nc-dark-success);
+  --nc-warning: var(--nc-dark-warning);
+  --nc-error: var(--nc-dark-error);
+  --nc-info: var(--nc-dark-info);
+  
+  --nc-text-primary: var(--nc-dark-text-primary);
+  --nc-text-secondary: var(--nc-dark-text-secondary);
+  --nc-text-muted: var(--nc-dark-text-muted);
+  
+  --nc-interactive: var(--nc-dark-interactive);
+  --nc-border: var(--nc-dark-border);
+  --nc-hover: var(--nc-dark-hover);
+}
+
+/* === CLASSES UTILITÁRIAS === */
+
+/* Cores de Fundo */
+.nc-bg-primary { background-color: var(--nc-primary); }
+.nc-bg-secondary { background-color: var(--nc-secondary); }
+.nc-bg-surface { background-color: var(--nc-surface); }
+.nc-bg-success { background-color: var(--nc-success); }
+.nc-bg-warning { background-color: var(--nc-warning); }
+.nc-bg-error { background-color: var(--nc-error); }
+
+/* Cores de Texto */
+.nc-text-primary { color: var(--nc-text-primary); }
+.nc-text-secondary { color: var(--nc-text-secondary); }
+.nc-text-muted { color: var(--nc-text-muted); }
+.nc-text-white { color: #ffffff; }
+
+/* Botões */
+.nc-btn-primary {
+  background-color: var(--nc-primary);
+  color: var(--nc-secondary);
+  border: none;
+  padding: var(--nc-space-sm) var(--nc-space-lg);
+  border-radius: var(--nc-radius-md);
+  font-weight: 600;
+  font-family: var(--nc-font-sans);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nc-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--nc-shadow-md);
+}
+
+.nc-btn-secondary {
+  background-color: var(--nc-secondary);
+  color: var(--nc-surface);
+  border: none;
+  padding: var(--nc-space-sm) var(--nc-space-lg);
+  border-radius: var(--nc-radius-md);
+  font-weight: 600;
+  font-family: var(--nc-font-sans);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.nc-btn-secondary:hover {
+  background-color: var(--nc-text-primary);
+}
+
+/* Cartões */
+.nc-card {
+  background-color: var(--nc-surface);
+  border: 1px solid var(--nc-border);
+  border-radius: var(--nc-radius-lg);
+  padding: var(--nc-space-lg);
+  box-shadow: var(--nc-shadow-sm);
+  transition: all 0.2s ease;
+}
+
+.nc-card:hover {
+  box-shadow: var(--nc-shadow-md);
+  transform: translateY(-2px);
+}
+
+/* Inputs */
+.nc-input {
+  background-color: var(--nc-surface);
+  border: 1px solid var(--nc-border);
+  border-radius: var(--nc-radius-md);
+  padding: var(--nc-space-sm) var(--nc-space-md);
+  font-family: var(--nc-font-sans);
+  color: var(--nc-text-primary);
+  width: 100%;
+  transition: border-color 0.2s ease;
+}
+
+.nc-input:focus {
+  outline: none;
+  border-color: var(--nc-primary);
+  box-shadow: 0 0 0 3px rgba(75, 255, 165, 0.1);
+}
+
+/* Chat RAG Específico */
+.nc-chat-container {
+  background-color: var(--nc-surface);
+  border-radius: var(--nc-radius-xl);
+  box-shadow: var(--nc-shadow-lg);
+  overflow: hidden;
+}
+
+.nc-chat-header {
+  background-color: var(--nc-secondary);
+  color: var(--nc-surface);
+  padding: var(--nc-space-lg);
+  text-align: center;
+}
+
+.nc-chat-messages {
+  padding: var(--nc-space-lg);
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.nc-message-user {
+  background-color: var(--nc-primary);
+  color: var(--nc-secondary);
+  padding: var(--nc-space-sm) var(--nc-space-md);
+  border-radius: var(--nc-radius-lg);
+  margin-bottom: var(--nc-space-sm);
+  margin-left: auto;
+  max-width: 80%;
+}
+
+.nc-message-assistant {
+  background-color: var(--nc-hover);
+  color: var(--nc-text-primary);
+  padding: var(--nc-space-sm) var(--nc-space-md);
+  border-radius: var(--nc-radius-lg);
+  margin-bottom: var(--nc-space-sm);
+  max-width: 80%;
+}
+
+.nc-upload-area {
+  border: 2px dashed var(--nc-border);
+  border-radius: var(--nc-radius-lg);
+  padding: var(--nc-space-2xl);
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.nc-upload-area:hover {
+  border-color: var(--nc-primary);
+  background-color: var(--nc-hover);
+}
+
+/* Estados de Alerta */
+.nc-alert-success {
+  background-color: var(--nc-success);
+  color: white;
+  padding: var(--nc-space-md);
+  border-radius: var(--nc-radius-md);
+  margin-bottom: var(--nc-space-md);
+}
+
+.nc-alert-warning {
+  background-color: var(--nc-warning);
+  color: white;
+  padding: var(--nc-space-md);
+  border-radius: var(--nc-radius-md);
+  margin-bottom: var(--nc-space-md);
+}
+
+.nc-alert-error {
+  background-color: var(--nc-error);
+  color: white;
+  padding: var(--nc-space-md);
+  border-radius: var(--nc-radius-md);
+  margin-bottom: var(--nc-space-md);
+}
+
+/* Utilitários de Espaçamento */
+.nc-p-xs { padding: var(--nc-space-xs); }
+.nc-p-sm { padding: var(--nc-space-sm); }
+.nc-p-md { padding: var(--nc-space-md); }
+.nc-p-lg { padding: var(--nc-space-lg); }
+.nc-p-xl { padding: var(--nc-space-xl); }
+
+.nc-m-xs { margin: var(--nc-space-xs); }
+.nc-m-sm { margin: var(--nc-space-sm); }
+.nc-m-md { margin: var(--nc-space-md); }
+.nc-m-lg { margin: var(--nc-space-lg); }
+.nc-m-xl { margin: var(--nc-space-xl); }
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .nc-chat-container {
+    border-radius: 0;
+    height: 100vh;
+  }
+  
+  .nc-message-user,
+  .nc-message-assistant {
+    max-width: 95%;
+  }
+}
+
+/* === EXEMPLO DE USO === */
+/*
+
+<!-- HTML Básico -->
+<div class="nc-card">
+  <h2 class="nc-text-primary">Sistema RAG</h2>
+  <p class="nc-text-secondary">Faça upload dos seus documentos</p>
+  <button class="nc-btn-primary">Enviar PDF</button>
+</div>
+
+<!-- Chat RAG -->
+<div class="nc-chat-container">
+  <div class="nc-chat-header">
+    <h1>Notecraft Assistant</h1>
+  </div>
+  <div class="nc-chat-messages">
+    <div class="nc-message-assistant">
+      Olá! Envie seus documentos para começar.
+    </div>
+  </div>
+</div>
+
+<!-- Upload Area -->
+<div class="nc-upload-area">
+  <p>Arraste seus PDFs aqui</p>
+  <input type="file" accept=".pdf" class="nc-input">
+</div>
+
+*/
