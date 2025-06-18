@@ -1,215 +1,60 @@
-# 🚀 Professional RAG System
-### *Complete Retrieval-Augmented Generation Implementation*
+# 🚀 Sistema RAG Profissional
+### *Implementação Completa de Retrieval-Augmented Generation*
 
-> **From Zero to RAG Master in One Day** 🔥  
-> A production-ready RAG system with scientific evaluation and multiple strategies
+> **De Zero a Especialista em RAG em Um Dia** 🔥  
+> Sistema RAG pronto para produção com avaliação científica e múltiplas estratégias
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://python.org)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![RAG](https://img.shields.io/badge/RAG-Professional-red.svg)](https://github.com/Froggerr10/professional-rag-system)
+[![Licença](https://img.shields.io/badge/Licença-MIT-green.svg)](LICENSE)
+[![RAG](https://img.shields.io/badge/RAG-Profissional-red.svg)](https://github.com/Froggerr10/professional-rag-system)
 
-## 🎯 Why This RAG System?
+## 🎯 Por Que Este Sistema RAG?
 
-This isn't just another RAG tutorial. It's a **complete, production-ready system** that:
+Este não é apenas mais um tutorial de RAG. É um **sistema completo e pronto para produção** que oferece:
 
-- ✅ **Multiple Chunking Strategies** - Test what works best for your data
-- ✅ **Scientific Evaluation** - Quantitative metrics, not guesswork  
-- ✅ **Multiple LLM Providers** - OpenAI, Gemini, easily extensible
-- ✅ **Advanced Techniques** - HyDE, adaptive retrieval, LLM-as-Judge
-- ✅ **Enterprise Ready** - Full logging, error handling, configuration management
-- ✅ **Interactive Chat** - Built-in conversational interface
+- ✅ **Múltiplas Estratégias de Chunking** - Teste o que funciona melhor para seus dados
+- ✅ **Avaliação Científica** - Métricas quantitativas, não suposições  
+- ✅ **Múltiplos Provedores de LLM** - OpenAI, Gemini, facilmente extensível
+- ✅ **Técnicas Avançadas** - HyDE, recuperação adaptativa, LLM-como-Juiz
+- ✅ **Pronto para Empresas** - Log completo, tratamento de erros, gestão de configurações
+- ✅ **Chat Interativo** - Interface conversacional integrada
 
-## 🏗️ Architecture
+## 🚀 Início Rápido
 
-```
-📁 Professional RAG System
-├── 🔧 Core Components
-│   ├── document_processor.py    # Multi-format document ingestion
-│   ├── chunking_engine.py       # 4 chunking strategies with metrics
-│   ├── embedding_generator.py   # Vector generation & storage
-│   └── rag_agent.py            # Complete RAG agent + interactive chat
-├── 📊 Evaluation & Optimization  
-│   └── evaluation_system.py    # Scientific performance measurement
-├── 🚀 Automation
-│   ├── setup.py               # One-command installation
-│   └── run_masterclass.py     # Full pipeline automation
-└── ⚙️ Configuration
-    ├── config.yaml            # Flexible system configuration
-    └── .env.example           # API keys template
-```
-
-## 🚀 Quick Start
-
-### 1. Clone & Setup
+### 1. Clonar e Configurar
 ```bash
 git clone https://github.com/Froggerr10/professional-rag-system.git
 cd professional-rag-system
-python setup.py  # Installs everything automatically
+python setup.py  # Instala tudo automaticamente
 ```
 
-### 2. Configure API Keys
+### 2. Configurar Chaves de API
 ```bash
 cp .env.example .env
-# Add your OpenAI/Gemini API keys to .env
+# Adicione suas chaves de API OpenAI/Gemini no arquivo .env
 ```
 
-### 3. Add Your Documents
+### 3. Adicionar Seus Documentos
 ```bash
-# Place your PDFs, DOCX, or TXT files in data/raw/
-cp your-documents.pdf data/raw/
+# Coloque seus arquivos PDF, DOCX ou TXT em data/raw/
+cp seus-documentos.pdf data/raw/
 ```
 
-### 4. Run Complete Pipeline
+### 4. Executar Pipeline Completo
 ```bash
-python run_masterclass.py  # Executes entire pipeline automatically
+python run_masterclass.py  # Executa todo o pipeline automaticamente
 ```
 
-### 5. Interactive Chat
+### 5. Chat Interativo
 ```bash
-python rag_agent.py  # Start chatting with your documents!
+python rag_agent.py  # Comece a conversar com seus documentos!
 ```
 
-## 🧪 What Makes This RAG Different?
+## 🇧🇷 Características Brasileiras
 
-### **Multiple Chunking Strategies**
-- **Recursive Character**: Preserves natural text structure
-- **Token-based**: Precise token control for LLM limits  
-- **Semantic**: Meaning-aware text division
-- **Page-based**: Document structure preservation
+- ✅ **Interface totalmente em português**
+- ✅ **Suporte a documentos em PT-BR**
+- ✅ **Formatação brasileira**
+- ✅ **Documentação localizada**
 
-### **Scientific Evaluation System**
-- **LLM-as-Judge**: Automated response quality assessment
-- **Retrieval Metrics**: Precision, recall, relevance scoring
-- **Performance Tracking**: Response time, confidence scores
-- **A/B Testing**: Compare strategies with real data
-
-### **Advanced RAG Techniques**
-- **HyDE (Hypothetical Document Embeddings)**: Better retrieval through hypothetical answers
-- **Adaptive Retrieval**: Dynamic parameter adjustment based on query complexity
-- **Multi-provider Support**: OpenAI, Gemini, easily extensible
-- **Graceful Degradation**: Works even with imperfect retrieval
-
-## 📊 Performance Metrics
-
-The system automatically tracks and compares:
-- **Response Quality**: 0-10 scale using LLM evaluation
-- **Retrieval Accuracy**: How well documents match queries
-- **Response Time**: End-to-end latency measurement  
-- **Confidence Scores**: System certainty in answers
-- **Source Attribution**: Transparent citation tracking
-
-## 🔧 Configuration
-
-Everything is configurable via `config.yaml`:
-
-```yaml
-# Chunking Strategies
-chunking_strategies:
-  recursive_500_100:
-    type: "recursive"
-    chunk_size: 500
-    chunk_overlap: 100
-
-# Retrieval Configurations  
-retrieval_configs:
-  standard_conservative:
-    search_type: "similarity"
-    k: 3
-    score_threshold: 0.7
-    use_hyde: false
-```
-
-## 🎯 Use Cases
-
-### **Enterprise Knowledge Management**
-- Internal documentation search
-- Policy and procedure Q&A
-- Onboarding automation
-
-### **Research & Analysis**
-- Academic paper analysis
-- Legal document review
-- Technical specification queries
-
-### **Customer Support**
-- Product documentation chatbots
-- FAQ automation
-- Support ticket analysis
-
-### **Personal Knowledge Systems**
-- Personal note organization
-- Learning material Q&A
-- Document summarization
-
-## 📈 Results Dashboard
-
-The evaluation system provides comprehensive performance dashboards:
-
-| Strategy | Avg Score | Success Rate | Avg Time | Confidence |
-|----------|-----------|--------------|----------|------------|
-| recursive_500_100 | 8.7/10 | 95% | 0.42s | 0.89 |
-| token_400_50 | 8.2/10 | 92% | 0.38s | 0.85 |
-| semantic_auto | 7.9/10 | 88% | 0.51s | 0.82 |
-
-## 🛠️ Extending the System
-
-### Add New Chunking Strategy
-```python
-def custom_chunking(self, documents: List[Dict], config: Dict) -> List[Dict]:
-    # Your custom chunking logic here
-    return chunks
-```
-
-### Add New LLM Provider
-```python
-def _setup_custom_llm(self):
-    # Integration with your preferred LLM
-    return custom_client
-```
-
-### Custom Evaluation Metrics
-```python
-def custom_metric(self, question: str, answer: str) -> float:
-    # Your evaluation logic
-    return score
-```
-
-## 🔬 Research Foundation
-
-This implementation is based on cutting-edge RAG research:
-- **Lewis et al.** - Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks
-- **Gao et al.** - Precise Zero-Shot Dense Retrieval without Relevance Labels  
-- **Yu et al.** - Generate rather than Retrieve: Large Language Models are Strong Context Generators
-
-## 🤝 Contributing
-
-Contributions are welcome! Areas for improvement:
-- [ ] Graph RAG implementation
-- [ ] Multi-modal support (text + images)
-- [ ] More embedding providers
-- [ ] Advanced evaluation metrics
-- [ ] Web interface (Streamlit/Gradio)
-
-## 📝 License
-
-MIT License - feel free to use in commercial projects!
-
-## 🏆 Author
-
-**David De Cunto** - *RAG Systems Specialist*
-- Expertise: AI, Psychology, Music, Digital Marketing
-- Profile: ENFP-A, High IQ + ADHD (2e)
-- Focus: Transforming complex problems into practical AI solutions
-
----
-
-### 🚀 Ready to Master RAG?
-
-```bash
-git clone https://github.com/Froggerr10/professional-rag-system.git
-cd professional-rag-system  
-python setup.py
-python run_masterclass.py
-```
-
-**From zero to RAG expert in minutes!** 🔥
+**Feito com ❤️ para a comunidade brasileira de IA**
