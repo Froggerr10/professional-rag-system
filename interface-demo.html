@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema RAG Notecraft - Interface Completa</title>
+    <link rel="stylesheet" href="notecraft-colors.css">
+    <style>
+        /* Estilos específicos da interface RAG */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--nc-font-sans, 'Inter', sans-serif);
+            background: var(--nc-background, #f8fafc);
+            color: var(--nc-text-primary, #1e293b);
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: var(--nc-space-lg, 24px);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            background: var(--nc-surface, #ffffff);
+            border-radius: var(--nc-radius-xl, 16px);
+            padding: var(--nc-space-xl, 32px);
+            margin-bottom: var(--nc-space-lg, 24px);
+            box-shadow: var(--nc-shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--nc-primary, #4bffa5), var(--nc-secondary, #101010));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: var(--nc-space-sm, 8px);
+        }
+
+        .theme-toggle {
+            position: absolute;
+            top: var(--nc-space-lg, 24px);
+            right: var(--nc-space-lg, 24px);
+            background: var(--nc-surface, #ffffff);
+            border: 1px solid var(--nc-border, #e2e8f0);
+            border-radius: var(--nc-radius-md, 8px);
+            padding: var(--nc-space-sm, 8px);
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: var(--nc-space-lg, 24px);
+            flex: 1;
+        }
+
+        .upload-section, .chat-section {
+            background: var(--nc-surface, #ffffff);
+            border-radius: var(--nc-radius-xl, 16px);
+            padding: var(--nc-space-xl, 32px);
+            box-shadow: var(--nc-shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
+        }
+
+        .upload-area {
+            border: 2px dashed var(--nc-border, #e2e8f0);
+            border-radius: var(--nc-radius-lg, 12px);
+            padding: var(--nc-space-xl, 32px);
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-bottom: var(--nc-space-lg, 24px);
+        }
+
+        .upload-area:hover {
+            border-color: var(--nc-primary, #4bffa5);
+            background: var(--nc-hover, #f1f5f9);
+        }
+
+        .btn-primary {
+            background: var(--nc-primary, #4bffa5);
+            color: var(--nc-secondary, #101010);
+            border: none;
+            padding: var(--nc-space-sm, 8px) var(--nc-space-lg, 24px);
+            border-radius: var(--nc-radius-md, 8px);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: var(--nc-shadow-md, 0 4px 6px -1px rgba(0, 0, 0, 0.1));
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: var(--nc-space-md, 16px);
+            margin-bottom: var(--nc-space-lg, 24px);
+            border: 1px solid var(--nc-border, #e2e8f0);
+            border-radius: var(--nc-radius-lg, 12px);
+            background: var(--nc-background, #f8fafc);
+            height: 400px;
+        }
+
+        .message {
+            margin-bottom: var(--nc-space-md, 16px);
+            padding: var(--nc-space-md, 16px);
+            border-radius: var(--nc-radius-lg, 12px);
+            max-width: 80%;
+        }
+
+        .message.user {
+            background: var(--nc-primary, #4bffa5);
+            color: var(--nc-secondary, #101010);
+            margin-left: auto;
+        }
+
+        .message.assistant {
+            background: var(--nc-hover, #f1f5f9);
+            color: var(--nc-text-primary, #1e293b);
+            border: 1px solid var(--nc-border, #e2e8f0);
+        }
+
+        .message.system {
+            background: var(--nc-warning, #f59e0b);
+            color: white;
+            text-align: center;
+            margin: 0 auto;
+            max-width: 100%;
+        }
+
+        .chat-input-area {
+            display: flex;
+            gap: var(--nc-space-md, 16px);
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: var(--nc-space-md, 16px);
+            border: 1px solid var(--nc-border, #e2e8f0);
+            border-radius: var(--nc-radius-md, 8px);
+            background: var(--nc-surface, #ffffff);
+            color: var(--nc-text-primary, #1e293b);
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--nc-primary, #4bffa5);
+            box-shadow: 0 0 0 3px rgba(75, 255, 165, 0.2);
+        }
+
+        .file-input { display: none; }
+
+        @media (max-width: 768px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+            .theme-toggle {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-bottom: var(--nc-space-md, 16px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()" title="Alternar tema">
+        <span id="theme-icon">🌙</span>
+    </button>
+
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Sistema RAG Notecraft</h1>
+            <p>Interface de demonstração completa</p>
+        </div>
+
+        <div class="main-layout">
+            <!-- Upload Section -->
+            <div class="upload-section">
+                <h2>📄 Documentos</h2>
+                
+                <div class="upload-area" onclick="alert('Upload simulado! Esta é uma demo.')">
+                    <div style="font-size: 48px; margin-bottom: 16px;">📁</div>
+                    <p><strong>Clique para simular upload</strong></p>
+                    <p style="color: #64748b; font-size: 0.875rem;">
+                        Demo: PDF, DOCX, TXT
+                    </p>
+                </div>
+                
+                <button class="btn-primary" onclick="loadSampleData()">
+                    📊 Carregar Dados de Exemplo
+                </button>
+
+                <div id="documentsList" style="margin-top: 24px;">
+                    <!-- Documentos aparecerão aqui -->
+                </div>
+            </div>
+
+            <!-- Chat Section -->
+            <div class="chat-section">
+                <h2>💬 Chat RAG</h2>
+                
+                <div class="chat-messages" id="chatMessages">
+                    <div class="message system">
+                        🚀 Interface de demonstração carregada!<br>
+                        Use o botão "Carregar Dados" e teste as perguntas.
+                    </div>
+                </div>
+
+                <div class="chat-input-area">
+                    <input type="text" 
+                           class="chat-input" 
+                           id="chatInput" 
+                           placeholder="Digite: Como solicitar férias?"
+                           onkeypress="if(event.key==='Enter') sendMessage()">
+                    <button class="btn-primary" onclick="sendMessage()">
+                        Enviar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            html.setAttribute('data-theme', newTheme);
+            document.getElementById('theme-icon').textContent = newTheme === 'light' ? '🌙' : '☀️';
+        }
+
+        let documentsLoaded = false;
+
+        function loadSampleData() {
+            if (documentsLoaded) return;
+            
+            const docsList = document.getElementById('documentsList');
+            docsList.innerHTML = `
+                <div style="background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-bottom: 8px;">
+                    📄 politica_ferias.pdf <span style="float: right; background: #22c55e; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">✅ Pronto</span>
+                </div>
+                <div style="background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px; margin-bottom: 8px;">
+                    📄 manual_ti.docx <span style="float: right; background: #22c55e; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">✅ Pronto</span>
+                </div>
+                <div style="background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px;">
+                    📄 regulamento.txt <span style="float: right; background: #22c55e; color: white; padding: 4px 8px; border-radius: 4px; font-size: 0.8rem;">✅ Pronto</span>
+                </div>
+            `;
+            
+            addMessage('📚 Documentos de exemplo carregados! Agora você pode fazer perguntas.', 'system');
+            documentsLoaded = true;
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            if (!documentsLoaded) {
+                addMessage('⚠️ Carregue os documentos primeiro!', 'system');
+                return;
+            }
+
+            addMessage(message, 'user');
+            input.value = '';
+
+            // Simular resposta
+            setTimeout(() => {
+                const response = getRAGResponse(message);
+                addMessage(response, 'assistant');
+            }, 1500);
+        }
+
+        function getRAGResponse(question) {
+            const responses = {
+                'férias': 'Com base na política de férias, todo funcionário tem direito a 30 dias após 12 meses de trabalho. Deve solicitar com 30 dias de antecedência via sistema interno. 📚 Fonte: politica_ferias.pdf',
+                'email': 'Para configurar email: Servidor mail.empresa.com.br, porta 993/587, SSL obrigatório. Use suas credenciais corporativas. 📚 Fonte: manual_ti.docx',
+                'suporte': 'Suporte técnico: Portal suporte.empresa.com.br, tel (11) 3333-4444. Prazos: Crítico 1h, Alto 4h, Médio 1 dia. 📚 Fonte: manual_ti.docx'
+            };
+
+            for (const [key, response] of Object.entries(responses)) {
+                if (question.toLowerCase().includes(key)) {
+                    return response;
+                }
+            }
+
+            return `Analisei "${question}" nos documentos. Tente perguntas sobre: férias, email, suporte técnico, ou procedimentos internos. 📚 Fontes disponíveis: 3 documentos`;
+        }
+
+        function addMessage(text, type) {
+            const container = document.getElementById('chatMessages');
+            const div = document.createElement('div');
+            div.className = `message ${type}`;
+            div.innerHTML = text;
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        // Perguntas de exemplo
+        document.addEventListener('DOMContentLoaded', function() {
+            const examples = [
+                'Como solicitar férias?',
+                'Como configurar email?',
+                'Como abrir chamado de suporte?'
+            ];
+            
+            examples.forEach((example, i) => {
+                setTimeout(() => {
+                    const suggestion = document.createElement('div');
+                    suggestion.style.cssText = 'background: #f1f5f9; border: 1px solid #e2e8f0; padding: 8px 12px; margin: 4px 0; border-radius: 6px; cursor: pointer; font-size: 0.875rem;';
+                    suggestion.textContent = `💡 ${example}`;
+                    suggestion.onclick = () => {
+                        document.getElementById('chatInput').value = example;
+                        sendMessage();
+                    };
+                    document.querySelector('.upload-section').appendChild(suggestion);
+                }, i * 500);
+            });
+        });
+    </script>
+</body>
+</html>
